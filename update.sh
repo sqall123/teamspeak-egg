@@ -58,4 +58,4 @@ if [ ! -f ts3server.ini ]; then
 fi
 
 echo 'starting server...'
-./ts3server_minimal_runscript.sh inifile=ts3server.ini default_voice_port=27107
+./ts3server_minimal_runscript.sh inifile=ts3server.ini default_voice_port=$(awk -F "=" '/default_voice_port/ {print $2}' ts3server.ini | awk '{ gsub(/ /,""); print }')
