@@ -43,12 +43,10 @@ updateToVersion() {
 
 if [ "$LATEST_VERSION" != "$INSTALLED_VERSION" ] && [ "$STATIC_VERSION" = 0 ];
 then
-#    updateToVersion "$LATEST_VERSION"
-    echo "1"
+    echo '1'
 elif [ "$SERVER_VERSION" != "$INSTALLED_VERSION" ] && [ "$STATIC_VERSION" = 1 ];
 then
-#    updateToVersion "$SERVER_VERSION"
-    echo "2"
+    echo '2'
 else
     echo 'No update required.'
 fi
