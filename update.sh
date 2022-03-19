@@ -1,7 +1,6 @@
 #!/bin/bash
-apt-get install -y jq
 # get latest version from teamspeak
-LATEST_VERSION=$(curl -s 'https://www.teamspeak.com/versions/server.json' | jq -r '.linux.x86_64.version')
+LATEST_VERSION=$(curl -s https://raw.githubusercontent.com/KingJP/teamspeak-egg/master/tsversion)
 echo "Latest TeamSpeak3 Version: $LATEST_VERSION"
 
 # get installed version from version_installed.txt
