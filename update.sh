@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# get latest version from github
-LATEST_VERSION=$(curl -s https://raw.githubusercontent.com/KingJP/teamspeak-egg/master/tsversion)
+# get latest version from teamspeak
+LATEST_VERSION=$(curl -s 'https://www.teamspeak.com/versions/server.json' | jq -r '.linux.x86_64.version')
 echo "Latest TeamSpeak3 Version: $LATEST_VERSION"
 
 # get installed version from version_installed.txt
@@ -12,12 +12,12 @@ echo "Installed TeamSpeak3 Version: $INSTALLED_VERSION"
 set -a
 . "version_static.txt"
 set +a
-STATIC_VERSION=0
-if ! [ "$SERVER_VERSION" = "undefined" ] && ! [ "$SERVER_VERSION" = 0 ];
-then
-    STATIC_VERSION=1
-    echo "Server is set to static version: $SERVER_VERSION"
-fi
+#STATIC_VERSION=0
+#if ! [ "$SERVER_VERSION" = "undefined" ] && ! [ "$SERVER_VERSION" = 0 ];
+#then
+#    STATIC_VERSION=1
+#    echo "Server is set to static version: $SERVER_VERSION"
+#fi
 
 updateToVersion() {
     TSVERSION=$1
@@ -44,10 +44,10 @@ updateToVersion() {
 
 if [ "$LATEST_VERSION" != "$INSTALLED_VERSION" ] && [ "$STATIC_VERSION" = 0 ];
 then
-    updateToVersion "$LATEST_VERSION"
+#    updateToVersion "$LATEST_VERSION"
 elif [ "$SERVER_VERSION" != "$INSTALLED_VERSION" ] && [ "$STATIC_VERSION" = 1 ];
 then
-    updateToVersion "$SERVER_VERSION"
+#    updateToVersion "$SERVER_VERSION"
 else
     echo 'No update required.'
 fi
