@@ -9,7 +9,9 @@ INSTALLED_VERSION=$(cat version_installed.txt)
 echo "Installed TeamSpeak3 Version: $INSTALLED_VERSION"
 
 # check if there is a static version set in pterodactyl panel
+set -a
 . "version_static.txt"
+set +a
 STATIC_VERSION=0
 if ! [ "$SERVER_VERSION" = "undefined" ] && ! [ "$SERVER_VERSION" = 0 ];
 then
